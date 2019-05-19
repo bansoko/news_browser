@@ -22,10 +22,10 @@ workflows:
   version: 2
   deploy:
     jobs:
-      - test:
+      - pytest
       - deploy:
           reqires:
-            - test
+            - pytest
           filters:
             branches:
               only: master
