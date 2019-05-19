@@ -8,6 +8,7 @@ jobs:
       - run:
           name: pytest
           command: |
+            pip install pytest
             pytest
   deploy:
     docker:
