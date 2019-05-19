@@ -1,13 +1,14 @@
 version: 2
 jobs:
   test:
-    - image: circleci/python:3.6.5
+    docker:
+      - image: circleci/python:3.6.5
     steps:
       - checkout
-      -run:
-        name: pytest
-        command: |
-          pytest
+      - run:
+          name: pytest
+          command: |
+            pytest
   deploy:
     docker:
       - image: circleci/python:3.6.5

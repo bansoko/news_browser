@@ -1,1 +1,1 @@
-web: python app/event_handler.py
+web: python event_handler.py
