@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  "pytest":
+  pytest:
     docker:
       - image: circleci/python:3.6.5
     steps:
@@ -22,10 +22,10 @@ workflows:
   version: 2
   test_and_deploy:
     jobs:
-      - "pytest"
+      - pytest:
       - deploy:
           reqires:
-            - "pytest"
+            - pytest:
           filters:
             branches:
               only: master
