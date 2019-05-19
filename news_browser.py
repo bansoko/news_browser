@@ -1,11 +1,15 @@
 import feedparser
 import os
+from os.path import join, dirname
 import urllib.request
 import urllib.parse
 import json
 import pprint
 import numpy as np
+from dotenv import load_dotenv
 
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
 GOOGLE_SCRIPT_END_POINT = os.environ["GOOGLE_SCRIPT_END_POINT"]
 
 
@@ -83,7 +87,9 @@ def get_published_title(user_id):
 
 
 def sent_hash_to_google(news, user_id, sent_history):
+    print("sent history", sent_history)
     if not sent_history: return
+    print("history sending...")
     param = {'type': "set_title", 'user_id': user_id, 'titles': news}
     req = urllib.request.Request(GOOGLE_SCRIPT_END_POINT,
                                  json.dumps(param).encode(),
