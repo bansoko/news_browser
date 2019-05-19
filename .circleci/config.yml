@@ -22,7 +22,7 @@ workflows:
   version: 2
   deploy:
     jobs:
-      - pytest
+      - pytest:
       - deploy:
           reqires:
             - pytest
