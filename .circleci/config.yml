@@ -1,5 +1,13 @@
 version: 2
 jobs:
+  test:
+    - image: circleci/python:3.6.5
+    steps:
+      - checkout
+      -run:
+        name: pytest
+        command: |
+          pytest
   deploy:
     docker:
       - image: circleci/python:3.6.5
@@ -13,7 +21,10 @@ workflows:
   version: 2
   deploy:
     jobs:
+      - test:
       - deploy:
+          reqires:
+            - test
           filters:
             branches:
               only: master

@@ -5,14 +5,8 @@ import json
 
 import news_browser
 
-from linebot import (
-    LineBotApi, WebhookHandler
-)
-from linebot.exceptions import (
-    InvalidSignatureError
-)
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage, FollowEvent, UnfollowEvent)
+    TextSendMessage, FollowEvent)
 
 GOOGLE_SCRIPT_END_POINT = os.environ["GOOGLE_SCRIPT_END_POINT"]
 

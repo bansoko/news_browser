@@ -10,7 +10,10 @@ from dotenv import load_dotenv
 
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
-GOOGLE_SCRIPT_END_POINT = os.environ["GOOGLE_SCRIPT_END_POINT"]
+try:
+    GOOGLE_SCRIPT_END_POINT = os.environ["GOOGLE_SCRIPT_END_POINT"]
+except:
+    pass
 
 
 def create_news_list(key_word, user_id, check_duplicate_able, sent_history):
