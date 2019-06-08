@@ -85,8 +85,8 @@ class MessagePublisher:
 
     def __remove_blank(self, tuple):
         # need to check blank test additionally
-        if tuple[0][0] == ('' or ' '):
-            if tuple[1][0] == ('' or ' '):
+        if tuple[0][0] == '' or tuple[0][0] == ' ':
+            if tuple[1][0] == '' or tuple[1][0] == ' ':
                 return tuple[2][0]
             return tuple[1][0]
         return tuple[0][0]

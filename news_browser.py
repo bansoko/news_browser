@@ -64,6 +64,7 @@ def create_sortKey(entry):
 
 def search_news(key_word, user_id, check_duplicate_able=False, sent_history=True):
     search_result = create_news_list(key_word, user_id, check_duplicate_able, sent_history)
+    print("search result: ", search_result)
     messages = [
         "%s\n%s " % (message['link'], message['title'])
         for message in search_result[:3]
