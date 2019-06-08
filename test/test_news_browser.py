@@ -6,7 +6,6 @@ import news_browser
 
 
 def test_filter_published_news():
-    print("testtesttest")
     test_case = {
         'news': [{'link': 'https://news.tbs.co.jp/newseye/tbs_newseye3677003.html'},
                   {'link': 'https://www.kobe-np.co.jp/news/sports/201905/0012344139.shtml'},

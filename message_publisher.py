@@ -45,13 +45,13 @@ class MessagePublisher:
             self.line_bot_api.push_message(user, sending_data)
 
     def publish_test(self):
-        self_id = "U542cfb0a136e0243dab8582e661e0028"
+        self_id = os.environ['SELF_ID']
         key_word_for_search = self.__get_key_word(self_id)
         news = news_browser.search_news(
             key_word_for_search,
             self_id,
             check_duplicate_able=True,
-            sent_history=False)
+            sent_history=True)
         print("publish news is: ", news)
         print(list(self.remove_title(news)))
 
@@ -77,14 +77,17 @@ class MessagePublisher:
             response = res.read()
         print("res: ", response.decode())
         key_words = np.array(json.loads(response)['data']).reshape(-1)
-        count = collections.Counter(key_words).most_common(2)
+        count = collections.Counter(key_words).most_common(3)
         print(count)
-        key_word = self.remove_blank(count)
+        key_word = self.__remove_blank(count)
         print("use key word is: %s" % key_word)
         return key_word
 
-    def remove_blank(self, tuple):
+    def __remove_blank(self, tuple):
+        # need to check blank test additionally
         if tuple[0][0] == ('' or ' '):
+            if tuple[1][0] == ('' or ' '):
+                return tuple[2][0]
             return tuple[1][0]
         return tuple[0][0]
 
